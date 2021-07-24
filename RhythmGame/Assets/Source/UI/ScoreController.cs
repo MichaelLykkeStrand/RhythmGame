@@ -37,6 +37,7 @@ public class ScoreController : MonoBehaviour
     public void Miss()
     {
         comboScore = 0;
+        comboText.text = comboScore.ToString();
         comboGroup.transform.DOShakePosition(0.2f,4f);
     }
 }
