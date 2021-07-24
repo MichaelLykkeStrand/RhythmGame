@@ -52,25 +52,40 @@ public class NodeController : MonoBehaviour
             double timeStamp = timeStamps[inputIndex];
             double marginOfError = GameController.Instance.marginOfErrorInSeconds;
             double audioTime = GameController.GetAudioSourceTime() - (GameController.Instance.inputDelayInMilliseconds / 1000.0);
-
-            if (Input.GetButtonDown(nodes[inputIndex & nodes.Length-1].Input))
+            string key = nodes[inputIndex].Input;
+            try
             {
-                if (Math.Abs(audioTime - timeStamp) < marginOfError)
+                if (Input.GetButtonDown(key))
                 {
-                    Hit();
-                    print($"Hit on {inputIndex} note");
+                    if (Math.Abs(audioTime - timeStamp) < marginOfError)
+                    {
+                        Hit();
+                        print($"Hit on {inputIndex} note");
+                        inputIndex++;
+                    }
+                    else
+                    {
+                        print($"Hit inaccurate on {inputIndex} note with {Math.Abs(audioTime - timeStamp)} delay");
+                    }
+                }
+            }
+            catch (Exception){}
+            if (timeStamp + marginOfError <= audioTime)
+            {
+                
+                if (key!= "")
+                {
+                    Miss();
+                    print($"Missed {key} key");
                     inputIndex++;
                 }
                 else
                 {
-                    print($"Hit inaccurate on {inputIndex} note with {Math.Abs(audioTime - timeStamp)} delay");
+                    Debug.Log($"Autojump");
+                    playerMovement.Move();
+                    inputIndex++;
                 }
-            }
-            if (timeStamp + marginOfError <= audioTime)
-            {
-                Miss();
-                print($"Missed {inputIndex} note");
-                inputIndex++;
+                
             }
             
         }

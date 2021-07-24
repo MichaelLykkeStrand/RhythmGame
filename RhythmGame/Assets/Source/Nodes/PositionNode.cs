@@ -8,6 +8,7 @@ public class PositionNode : MonoBehaviour
     [SerializeField] private float jumpPower;
     [SerializeField] private float transitionTime = 1f;
     [SerializeField] private bool isWall = false;
+    public bool isCheckpoint = false;
     [SerializeField] private string input;
 
 
