@@ -53,7 +53,7 @@ public class NodeController : MonoBehaviour
             double marginOfError = GameController.Instance.marginOfErrorInSeconds;
             double audioTime = GameController.GetAudioSourceTime() - (GameController.Instance.inputDelayInMilliseconds / 1000.0);
 
-            if (Input.GetKeyDown(nodes[inputIndex & nodes.Length-1].Input))
+            if (Input.GetButtonDown(nodes[inputIndex & nodes.Length-1].Input))
             {
                 if (Math.Abs(audioTime - timeStamp) < marginOfError)
                 {
