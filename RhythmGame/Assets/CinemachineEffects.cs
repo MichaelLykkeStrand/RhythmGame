@@ -21,12 +21,12 @@ public class CinemachineEffects : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Bob();
+            Punch();
         }
     }
 
 
-    public void Bob()
+    public void Punch()
     {
         float newSize = defaultOrthographicSize + punchEffectScale;
         float orthographicSize = cinemachineVirtualCamera.m_Lens.OrthographicSize;
