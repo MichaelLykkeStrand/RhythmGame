@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class CinemachineEffects : MonoBehaviour
 {
+    public static CinemachineEffects instance;
     private CinemachineVirtualCamera cinemachineVirtualCamera;
     [SerializeField] private float punchEffectScale = -0.5f;
     [SerializeField] private float punchEffectTime = 0.1f;
@@ -13,16 +14,13 @@ public class CinemachineEffects : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        instance = this;
         cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
         defaultOrthographicSize = cinemachineVirtualCamera.m_Lens.OrthographicSize;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Punch();
-        }
     }
 
 

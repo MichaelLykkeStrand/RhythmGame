@@ -80,6 +80,7 @@ public class NodeController : MonoBehaviour
     {
         playerMovement.Move();
         ScoreController.Instance.Hit();
+        CinemachineEffects.instance.Punch();
 
     }
     private void Miss()
