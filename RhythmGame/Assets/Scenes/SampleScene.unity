@@ -202,7 +202,7 @@ MonoBehaviour:
   transitionTime: 0.5
   isWall: 0
   isCheckpoint: 0
-  input: 
+  input: 0
 --- !u!4 &43320991
 Transform:
   m_ObjectHideFlags: 0
@@ -653,7 +653,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 7, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &555771712
@@ -2706,7 +2706,7 @@ MonoBehaviour:
   transitionTime: 0.5
   isWall: 0
   isCheckpoint: 0
-  input: Jump
+  input: 0
 --- !u!4 &5980684244479576084
 Transform:
   m_ObjectHideFlags: 0
@@ -2738,7 +2738,7 @@ MonoBehaviour:
   transitionTime: 0.5
   isWall: 0
   isCheckpoint: 0
-  input: Jump
+  input: 0
 --- !u!1 &5980684244479576086
 GameObject:
   m_ObjectHideFlags: 0
@@ -2804,7 +2804,7 @@ MonoBehaviour:
   transitionTime: 0.5
   isWall: 0
   isCheckpoint: 0
-  input: Jump
+  input: 0
 --- !u!1 &5980684244705385117
 GameObject:
   m_ObjectHideFlags: 0
@@ -2839,7 +2839,7 @@ MonoBehaviour:
   transitionTime: 0.5
   isWall: 0
   isCheckpoint: 0
-  input: Jump
+  input: 0
 --- !u!4 &5980684244705385119
 Transform:
   m_ObjectHideFlags: 0
@@ -2871,7 +2871,7 @@ MonoBehaviour:
   transitionTime: 0.5
   isWall: 0
   isCheckpoint: 0
-  input: Jump
+  input: 0
 --- !u!4 &5980684244779135725
 Transform:
   m_ObjectHideFlags: 0
@@ -2951,7 +2951,7 @@ MonoBehaviour:
   transitionTime: 0.5
   isWall: 0
   isCheckpoint: 0
-  input: Jump
+  input: 0
 --- !u!1 &5980684245005951252
 GameObject:
   m_ObjectHideFlags: 0
@@ -3000,7 +3000,7 @@ MonoBehaviour:
   transitionTime: 0.5
   isWall: 0
   isCheckpoint: 0
-  input: Jump
+  input: 0
 --- !u!1 &5980684245084362617
 GameObject:
   m_ObjectHideFlags: 0
@@ -3035,7 +3035,7 @@ MonoBehaviour:
   transitionTime: 0.5
   isWall: 0
   isCheckpoint: 0
-  input: Jump
+  input: 1
 --- !u!4 &5980684245084362619
 Transform:
   m_ObjectHideFlags: 0
@@ -3067,7 +3067,7 @@ MonoBehaviour:
   transitionTime: 0.5
   isWall: 0
   isCheckpoint: 0
-  input: Jump
+  input: 1
 --- !u!4 &5980684245205896421
 Transform:
   m_ObjectHideFlags: 0
@@ -3147,7 +3147,7 @@ MonoBehaviour:
   transitionTime: 0.5
   isWall: 0
   isCheckpoint: 0
-  input: Jump
+  input: 0
 --- !u!114 &5980684245321247768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3165,7 +3165,7 @@ MonoBehaviour:
   transitionTime: 0.5
   isWall: 0
   isCheckpoint: 0
-  input: Jump
+  input: 0
 --- !u!4 &5980684245321247769
 Transform:
   m_ObjectHideFlags: 0
@@ -3214,7 +3214,7 @@ MonoBehaviour:
   transitionTime: 0.5
   isWall: 0
   isCheckpoint: 0
-  input: Jump
+  input: 0
 --- !u!4 &5980684245343481121
 Transform:
   m_ObjectHideFlags: 0
@@ -3280,7 +3280,7 @@ MonoBehaviour:
   transitionTime: 0.5
   isWall: 0
   isCheckpoint: 0
-  input: Jump
+  input: 0
 --- !u!4 &5980684245851665915
 Transform:
   m_ObjectHideFlags: 0
@@ -3312,7 +3312,7 @@ MonoBehaviour:
   transitionTime: 0.5
   isWall: 0
   isCheckpoint: 0
-  input: Jump
+  input: 2
 --- !u!4 &5980684245867899957
 Transform:
   m_ObjectHideFlags: 0

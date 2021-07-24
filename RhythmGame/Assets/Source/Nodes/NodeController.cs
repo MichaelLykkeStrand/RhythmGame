@@ -52,7 +52,7 @@ public class NodeController : MonoBehaviour
             double timeStamp = timeStamps[inputIndex];
             double marginOfError = GameController.Instance.marginOfErrorInSeconds;
             double audioTime = GameController.GetAudioSourceTime() - (GameController.Instance.inputDelayInMilliseconds / 1000.0);
-            string key = nodes[inputIndex].Input;
+            string key = nodes[inputIndex].GetInput();
             try
             {
                 if (Input.GetButtonDown(key))
