@@ -6,7 +6,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using UnityEngine;
 
-public class Serializer
+public static class Serializer
 {
     /// <summary>
     /// Serializes an object.
