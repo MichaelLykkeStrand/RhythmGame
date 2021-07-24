@@ -79,11 +79,13 @@ public class NodeController : MonoBehaviour
     private void Hit()
     {
         playerMovement.Move();
+        ScoreController.Instance.Hit();
 
     }
     private void Miss()
     {
         playerMovement.Move();
+        ScoreController.Instance.Miss();
     }
 
 }
