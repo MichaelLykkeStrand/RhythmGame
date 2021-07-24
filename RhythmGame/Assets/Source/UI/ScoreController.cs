@@ -18,7 +18,7 @@ public class ScoreController : MonoBehaviour
     {
         Instance = this;
         comboScore = 0;
-        comboText.text = comboScore.ToString();
+        comboText.text = comboScore+"";
     }
 
     // Update is called once per frame
@@ -30,14 +30,14 @@ public class ScoreController : MonoBehaviour
     public void Hit()
     {
         comboScore += 1;
-        comboText.text = comboScore.ToString();
+        comboText.text = comboScore+"";
         comboGroup.transform.DOPunchScale(new Vector2(-0.2f, -0.2f), 0.1f);
     }
 
     public void Miss()
     {
         comboScore = 0;
-        comboText.text = comboScore.ToString();
+        comboText.text = comboScore +"";
         comboGroup.transform.DOShakePosition(0.2f,4f);
     }
 }
