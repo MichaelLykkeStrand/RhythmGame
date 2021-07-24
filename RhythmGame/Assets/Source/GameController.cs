@@ -30,7 +30,16 @@ public class GameController : MonoBehaviour
 
     public void StartSong(Song song)
     {
-        StartCoroutine(LoadAsyncScene(song));
+        //Load premade scene
+        if(song.associatedScene.Length > 0)
+        {
+            StartCoroutine(LoadAsyncScene(song));
+        }
+        else
+        {
+            throw new NotImplementedException();
+        }
+       
     }
 
     IEnumerator LoadAsyncScene(Song song)
