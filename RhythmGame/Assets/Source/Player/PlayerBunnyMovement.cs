@@ -16,20 +16,17 @@ public class PlayerBunnyMovement : PlayerMovement
     // Update is called once per frame
     void Update()
     {
-        Move();
+
     }
 
     public override void Move()
     {
-        if (Input.GetButtonDown("Jump"))
-        {
-            Jump();
-        }
+        Jump();
     }
 
     private void Jump()
     {
-        PositionNode nextNode = currentNode.GetNextNode;
+        PositionNode nextNode = currentNode.NextNode;
         Vector2 nextPos = nextNode.transform.position;
         nextPos.y += player.Height / 2;
         float jumpPower = currentNode.JumpPower;
