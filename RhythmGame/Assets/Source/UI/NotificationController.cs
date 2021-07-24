@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreController : MonoBehaviour
+public class NotificationController : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
