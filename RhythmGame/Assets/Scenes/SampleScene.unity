@@ -3067,7 +3067,7 @@ MonoBehaviour:
   transitionTime: 0.5
   isWall: 0
   isCheckpoint: 0
-  input: 1
+  input: 2
 --- !u!4 &5980684245205896421
 Transform:
   m_ObjectHideFlags: 0
