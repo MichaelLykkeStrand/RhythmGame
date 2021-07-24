@@ -7,6 +7,7 @@ public class PositionNode : MonoBehaviour
     [SerializeField] private PositionNode nextNode;
     [SerializeField] private float jumpPower;
     [SerializeField] private float transitionTime = 1f;
+    [SerializeField] private bool isWall = false;
     [SerializeField] private string input;
 
 
@@ -14,4 +15,5 @@ public class PositionNode : MonoBehaviour
     public float JumpPower { get => jumpPower;}
     public float TransitionTime { get => transitionTime; set => transitionTime = value; }
     public string Input { get => input; set => input = value; }
+    public bool IsWall { get => isWall; set => isWall = value; }
 }
