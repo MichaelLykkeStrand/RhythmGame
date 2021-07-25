@@ -19,6 +19,8 @@ public class PositionNode : MonoBehaviour
     [SerializeField] private float jumpPower;
     [SerializeField] private float transitionTime = 1f;
     [SerializeField] private bool isWall = false;
+    public float activationTime;
+    public float assignedTime;
     private double visitTime;
     public int index;
     public bool isCheckpoint = false;
@@ -27,6 +29,9 @@ public class PositionNode : MonoBehaviour
     public PositionNode NextNode { get => nextNode; set => nextNode = value; }
     public float JumpPower { get => jumpPower;}
     public float TransitionTime { get => transitionTime; set => transitionTime = value; }
+    public bool IsWall { get => isWall; set => isWall = value; }
+    public double VisitTime { get => visitTime; set => visitTime = value; }
+
     public string GetInput()
     {
         if (input == InputEnum.none) return "";
@@ -37,6 +42,8 @@ public class PositionNode : MonoBehaviour
         return "";
     }
 
-    public bool IsWall { get => isWall; set => isWall = value; }
-    public double VisitTime { get => visitTime; set => visitTime = value; }
+    private void Update()
+    {
+        //TODO growth animation stuff
+    }
 }

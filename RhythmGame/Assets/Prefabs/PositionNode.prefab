@@ -45,7 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNode: {fileID: 0}
   jumpPower: 0.5
-  transitionTime: 0.7
+  transitionTime: 0.5
   isWall: 0
+  index: 0
   isCheckpoint: 0
   input: 0
