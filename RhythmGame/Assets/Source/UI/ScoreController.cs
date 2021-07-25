@@ -13,6 +13,7 @@ public class ScoreController : MonoBehaviour
     public AudioClip missSound;
 
     static int comboScore;
+    static int score;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +33,7 @@ public class ScoreController : MonoBehaviour
         comboScore += 1;
         comboText.text = comboScore+"";
         comboGroup.transform.DOPunchScale(new Vector2(-0.2f, -0.2f), 0.1f);
+        score += score * comboScore;
     }
 
     public void Miss()
