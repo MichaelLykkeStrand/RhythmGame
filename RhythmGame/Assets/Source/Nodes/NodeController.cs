@@ -122,7 +122,7 @@ public class NodeController : MonoBehaviour
     private void Miss(PositionNode node)
     {
         //playerMovement.Move();
-        //ScoreController.Instance.Miss();
+        ScoreController.Instance.Miss();
         GameController.Instance.SetAudioTime((float)currentCheckpoint.VisitTime);
         inputIndex = currentCheckpoint.index;
         playerMovement.transform.position = currentCheckpoint.transform.position;

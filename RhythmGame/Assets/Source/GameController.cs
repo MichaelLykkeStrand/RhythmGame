@@ -25,6 +25,14 @@ public class GameController : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(this);
         audioSource = GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseGame();
+        }
         
     }
 
@@ -117,11 +125,24 @@ public class GameController : MonoBehaviour
         var array = new Note[midiFile.GetNotes().Count];
         notes.CopyTo(array, 0);
         nodeController.SetTimeStamps(array);
-        nodeController.IsRunning = true;
-
+        ResumeGame();
 
         Invoke(nameof(StartAudio), songDelayInSeconds);
     }
 
+
+    public void PauseGame()
+    {
+        nodeController.IsRunning = false;
+        audioSource.Pause();
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        nodeController.IsRunning = true;
+        audioSource.UnPause();
+        Time.timeScale = 1;
+    }
 
 }
