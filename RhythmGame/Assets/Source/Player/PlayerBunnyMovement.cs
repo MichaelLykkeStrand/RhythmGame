@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class PlayerBunnyMovement : PlayerMovement
 {
-    [SerializeField] private PositionNode currentNode;
+    public PositionNode currentNode;
     private Player player;
     // Start is called before the first frame update
     void Start()
@@ -35,5 +35,14 @@ public class PlayerBunnyMovement : PlayerMovement
         transform.DOJump(nextPos,jumpPower,1,transitionTime);
         this.currentNode = nextNode;
 
+    }
+
+    void OnGUI()
+    {
+        if (Application.isEditor)  // or check the app debug flag
+        {
+            GUI.Label(new Rect(10, 50, 100, 20), "CurrentNode: " + currentNode.index);
+            GUI.Label(new Rect(10, 70, 100, 20), "NextNode: " + currentNode.NextNode.index);
+        }
     }
 }

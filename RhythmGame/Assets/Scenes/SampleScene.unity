@@ -260,6 +260,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5980684244035363557, guid: aefe7b6db8ec7a8419a75fa06595231b,
+        type: 3}
+      propertyPath: isCheckpoint
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5980684244035363558, guid: aefe7b6db8ec7a8419a75fa06595231b,
         type: 3}
       propertyPath: m_Name
@@ -676,18 +681,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 333406921}
   m_CullTransparentMesh: 0
---- !u!114 &366728827 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5980684244035363557, guid: aefe7b6db8ec7a8419a75fa06595231b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1978619289}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5742f93ba17a54469a7b393269b9732, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2178,7 +2171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64bbee6ba11d0c94d87a3868ba450f02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentNode: {fileID: 366728827}
+  currentNode: {fileID: 0}
 --- !u!114 &1049992045
 MonoBehaviour:
   m_ObjectHideFlags: 0

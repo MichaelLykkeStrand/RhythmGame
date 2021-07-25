@@ -97,13 +97,18 @@ public class GameController : MonoBehaviour
 
     public void StartAudio()
     {
-        audioSource.Play();
+        Instance.audioSource.Play();
+    }
+
+    public void SetAudioTime(float time)
+    {
+        Instance.audioSource.time = time;
     }
 
 
-    public static double GetAudioSourceTime()
+    public double GetAudioSourceTime()
     {
-        return (double)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency;
+        return (double)Instance.audioSource.time;
     }
 
     public void StartGame()

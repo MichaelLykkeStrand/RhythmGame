@@ -19,6 +19,8 @@ public class PositionNode : MonoBehaviour
     [SerializeField] private float jumpPower;
     [SerializeField] private float transitionTime = 1f;
     [SerializeField] private bool isWall = false;
+    private double visitTime;
+    public int index;
     public bool isCheckpoint = false;
     public InputEnum input = InputEnum.none;
 
@@ -36,4 +38,5 @@ public class PositionNode : MonoBehaviour
     }
 
     public bool IsWall { get => isWall; set => isWall = value; }
+    public double VisitTime { get => visitTime; set => visitTime = value; }
 }
