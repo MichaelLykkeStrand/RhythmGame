@@ -52,7 +52,10 @@ public class NodeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (!isRunning)
+        {
+            return;
+        }
         if (inputIndex < timeStamps.Count)
         {
             double timeStamp = timeStamps[inputIndex];
