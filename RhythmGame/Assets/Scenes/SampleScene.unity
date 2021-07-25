@@ -515,6 +515,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5980684244035363557, guid: aefe7b6db8ec7a8419a75fa06595231b,
+        type: 3}
+      propertyPath: input
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5980684244035363558, guid: aefe7b6db8ec7a8419a75fa06595231b,
         type: 3}
       propertyPath: m_Name
@@ -3081,6 +3086,11 @@ PrefabInstance:
         type: 3}
       propertyPath: jumpPower
       value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980684244035363557, guid: aefe7b6db8ec7a8419a75fa06595231b,
+        type: 3}
+      propertyPath: isCheckpoint
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5980684244035363558, guid: aefe7b6db8ec7a8419a75fa06595231b,
         type: 3}

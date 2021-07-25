@@ -125,7 +125,7 @@ public class NodeController : MonoBehaviour
         //ScoreController.Instance.Miss();
         GameController.Instance.SetAudioTime((float)currentCheckpoint.VisitTime);
         inputIndex = currentCheckpoint.index;
-        playerMovement.transform.position = nodes[0].transform.position;
+        playerMovement.transform.position = currentCheckpoint.transform.position;
         playerMovement.currentNode = currentCheckpoint;
     }
 
