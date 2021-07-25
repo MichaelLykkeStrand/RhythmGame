@@ -42,10 +42,18 @@ public class NodeController : MonoBehaviour
         for (int i = 0; i < notes.Length; i++)
         {
             Note note = notes[i];
+            
             if (note.NoteName == noteRestriction)
             {
                 var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, GameController.midiFile.GetTempoMap());
                 timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);
+                try
+                {
+                    PositionNode node = nodes[i];
+                    node.activationTime = (metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f) - 0.5f;
+                    node.assignedTime = (metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f);
+                }
+                catch (Exception){}
             }
         }
     }
@@ -122,7 +130,7 @@ public class NodeController : MonoBehaviour
     private void Miss(PositionNode node)
     {
         playerMovement.Move();
-        ScoreController.Instance.Miss();
+        ScoreController.Instance.Miss();    
         
     }
 

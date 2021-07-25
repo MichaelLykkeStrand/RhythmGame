@@ -21,7 +21,7 @@ public class PositionNode : MonoBehaviour
     [SerializeField] private bool isWall = false;
     public float activationTime;
     public float assignedTime;
-    private double visitTime;
+    [SerializeField] private double visitTime;
     public int index;
     public bool isCheckpoint = false;
     public InputEnum input = InputEnum.none;
