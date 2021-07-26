@@ -59,6 +59,7 @@ public class TransitionController : MonoBehaviour
                 image.color = newColor;
             });
             t.OnComplete(() => {
+                //TODO callback?
                 image.gameObject.SetActive(false);
             });
         }
