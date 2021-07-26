@@ -66,21 +66,39 @@ public class PositionNode : MonoBehaviour
     }
 
     private float blockPopInOffset = 0.6f;
+    private bool didFade = false;
     void Update()
     {
-        //TODO growth animation stuff
+        var blockSpriteRenderer = block.GetComponent<SpriteRenderer>();
         if (prevNode == null) {
             block.transform.position = blockSpawnpoint;
-            block.GetComponent<SpriteRenderer>().enabled = true;
+            blockSpriteRenderer.enabled = true;
             return;
         }
-
+        //Float in animation
         if (GameController.Instance.GetAudioSourceTime() > prevNode.activationTime)
         {
-            block.transform.DOMove(blockSpawnpoint, prevNode.assignedTime - prevNode.activationTime);
-            block.GetComponent<SpriteRenderer>().enabled = true;
+            float animTime = prevNode.assignedTime - prevNode.activationTime;
+            block.transform.DOMove(blockSpawnpoint, animTime);
+
+            if(didFade == false)
+            {
+                didFade = true;
+                float alpha = 0;
+                float maxAlpha = 1;
+                Tween t = DOTween.To(() => alpha, x => alpha = x, maxAlpha, animTime);
+                t.OnUpdate(() =>
+                {
+                    Color currentColor = blockSpriteRenderer.color;
+                    Color newColor = new Color(currentColor.r, currentColor.g, currentColor.b, alpha);
+                    blockSpriteRenderer.color = newColor;
+                });
+            }
+
+            blockSpriteRenderer.enabled = true;
         }
 
+        //TODO growth animation stuff
         if (GameController.Instance.GetAudioSourceTime() - activationTime > 0)
         {
 
