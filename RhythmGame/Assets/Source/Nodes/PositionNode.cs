@@ -65,7 +65,6 @@ public class PositionNode : MonoBehaviour
 
     }
 
-    private float blockPopInOffset = 0.6f;
     private bool didFade = false;
     void Update()
     {
@@ -79,10 +78,11 @@ public class PositionNode : MonoBehaviour
         if (GameController.Instance.GetAudioSourceTime() > prevNode.activationTime)
         {
             float animTime = prevNode.assignedTime - prevNode.activationTime;
-            block.transform.DOMove(blockSpawnpoint, animTime); //Move into didFade for lerp
+            
 
             if(didFade == false)
             {
+                block.transform.DOMove(blockSpawnpoint, animTime); //Move into didFade for lerp
                 didFade = true;
                 float alpha = 0;
                 float maxAlpha = 1;
