@@ -79,7 +79,7 @@ public class PositionNode : MonoBehaviour
         if (GameController.Instance.GetAudioSourceTime() > prevNode.activationTime)
         {
             float animTime = prevNode.assignedTime - prevNode.activationTime;
-            block.transform.DOMove(blockSpawnpoint, animTime);
+            block.transform.DOMove(blockSpawnpoint, animTime); //Move into didFade for lerp
 
             if(didFade == false)
             {
