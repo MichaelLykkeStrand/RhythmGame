@@ -11,6 +11,7 @@ public class LevelMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TransitionController.SetLoading(true);
         songRepository = SongRepository.instance;
         List<Song> songs = songRepository.GetSongs();
         foreach (var song in songs)
@@ -24,6 +25,7 @@ public class LevelMenu : MonoBehaviour
             var button = buttonInstance.GetComponent<Button>();
             button.onClick.AddListener(()=> OnLevelButtonClicked(song));
         }
+        TransitionController.SetLoading(false);
     }
 
     private void OnLevelButtonClicked(Song song)
