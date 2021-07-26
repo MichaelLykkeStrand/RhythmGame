@@ -32,7 +32,8 @@ public class NodeController : MonoBehaviour
         playerMovement.currentNode = nodes[0];
         for (int i = 0; i < nodes.Length-1; i++)
         {
-            nodes[i].NextNode = nodes[i + 1];
+            try { nodes[i].PrevNode = nodes[i - 1]; } catch (Exception) { }
+            try { nodes[i].NextNode = nodes[i + 1]; } catch (Exception) { }
             nodes[i].index = i;
         }
     }

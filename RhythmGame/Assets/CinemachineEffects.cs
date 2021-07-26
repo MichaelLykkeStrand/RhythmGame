@@ -19,11 +19,6 @@ public class CinemachineEffects : MonoBehaviour
         defaultOrthographicSize = cinemachineVirtualCamera.m_Lens.OrthographicSize;
     }
 
-    private void Update()
-    {
-    }
-
-
     public void Punch()
     {
         float newSize = defaultOrthographicSize + punchEffectScale;
@@ -33,7 +28,6 @@ public class CinemachineEffects : MonoBehaviour
         {
             cinemachineVirtualCamera.m_Lens.OrthographicSize = orthographicSize;
         });
-        
 
         t.OnComplete(() => {
             Tween k = DOTween.To(() => orthographicSize, x => orthographicSize = x, defaultOrthographicSize, punchEffectTime);
