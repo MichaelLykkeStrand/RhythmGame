@@ -13,6 +13,7 @@ public class NodeController : MonoBehaviour
     private PositionNode currentCheckpoint;
     private PlayerBunnyMovement playerMovement;
     int inputIndex = 0;
+    private bool doingLongNote = false;
 
     public bool IsRunning { get => isRunning; set => isRunning = value; }
 
@@ -61,25 +62,49 @@ public class NodeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isRunning)
+        if (!isRunning) return;
+
+        double timeStamp = timeStamps[inputIndex];
+        double marginOfError = GameController.Instance.marginOfErrorInSeconds;
+        double audioTime = GameController.Instance.GetAudioSourceTime() - (GameController.Instance.inputDelayInMilliseconds / 1000.0);
+        string key = nodes[inputIndex].GetInput();
+        PositionNode currentNode = nodes[inputIndex];
+
+        if (doingLongNote )
         {
-            return;
+            if (Input.GetButtonDown(key))
+            {
+
+            }
+            else
+            {
+                doingLongNote = false;
+                Miss(currentNode);
+            }
         }
+
         if (inputIndex < timeStamps.Count)
         {
-            double timeStamp = timeStamps[inputIndex];
-            double marginOfError = GameController.Instance.marginOfErrorInSeconds;
-            double audioTime = GameController.Instance.GetAudioSourceTime() - (GameController.Instance.inputDelayInMilliseconds / 1000.0);
-            string key = nodes[inputIndex].GetInput();
+
+
+            //Handle hit
             try
             {
                 if (Input.GetButtonDown(key))
                 {
                     if (Math.Abs(audioTime - timeStamp) < marginOfError) //Redo
                     {
-                        NodePassed(nodes[inputIndex], timeStamp);
-                        Hit(nodes[inputIndex]);
-                        print($"Hit on {inputIndex} note");
+                        if(currentNode is LongPositionNode)
+                        {
+                            doingLongNote = true;
+                        }
+                        else
+                        {
+                            NodePassed(currentNode, timeStamp);
+                            Hit(currentNode);
+                            print($"Hit on {inputIndex} note");
+                        }
+
                     }
                     else
                     {
@@ -88,19 +113,20 @@ public class NodeController : MonoBehaviour
                 }
             }
             catch (Exception){}
+            //Handle miss
             if (timeStamp + marginOfError <= audioTime)
             {
                 
                 if (key!= "")
                 {
-                    NodePassed(nodes[inputIndex], timeStamp);
-                    Miss(nodes[inputIndex]);
+                    NodePassed(currentNode, timeStamp);
+                    Miss(currentNode);
                     print($"Missed {key} key");
 
                 }
                 else
                 {
-                    NodePassed(nodes[inputIndex], timeStamp);
+                    NodePassed(currentNode, timeStamp);
                     Debug.Log($"Autojump");
                     playerMovement.Move();
 

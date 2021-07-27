@@ -29,9 +29,12 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && nodeController.IsRunning == true)
         {
             PauseGame();
+        } else if (Input.GetKeyDown(KeyCode.Escape) && nodeController.IsRunning == false)
+        {
+            ResumeGame();
         }
         
     }
