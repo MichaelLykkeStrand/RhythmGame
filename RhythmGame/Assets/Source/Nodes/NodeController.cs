@@ -125,6 +125,7 @@ public class NodeController : MonoBehaviour
     {
         playerMovement.Move();
         ScoreController.Instance.Hit();
+        node.Hit();
         CinemachineEffects.instance.Punch();
 
     }

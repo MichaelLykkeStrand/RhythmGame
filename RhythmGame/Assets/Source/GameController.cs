@@ -74,7 +74,8 @@ public class GameController : MonoBehaviour
         var clipPath = Application.streamingAssetsPath + "/" + song.songName + "/" + song.songName + ".wav";
         AudioClip audioClip = await LoadClip(clipPath);
         audioSource.clip = audioClip;
-        
+        Debug.Log("Finished loading song!");
+
     }
 
     async Task<AudioClip> LoadClip(string path)
@@ -121,6 +122,7 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
+        Debug.Log("Starting game!");
         var notes = midiFile.GetNotes();
         var array = new Note[midiFile.GetNotes().Count];
         notes.CopyTo(array, 0);

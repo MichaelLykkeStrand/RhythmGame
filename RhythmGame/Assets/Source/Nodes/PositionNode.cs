@@ -98,12 +98,17 @@ public class PositionNode : MonoBehaviour
             blockSpriteRenderer.enabled = true;
         }
 
-        //TODO growth animation stuff
+        
         if (GameController.Instance.GetAudioSourceTime() - activationTime > 0)
         {
 
         }
 
-        //TODO block animation stuff
+    }
+
+    //TODO growth animation stuff
+    public void Hit()
+    {
+
     }
 }
