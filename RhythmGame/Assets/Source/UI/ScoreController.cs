@@ -9,11 +9,12 @@ public class ScoreController : MonoBehaviour
     public static ScoreController Instance;
     public GameObject comboGroup;
     public Text comboText;
+    public Text scoreText;
     public AudioClip hitSound;
     public AudioClip missSound;
 
     static int comboScore;
-    static int score;
+    static int score = 100;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,15 +32,22 @@ public class ScoreController : MonoBehaviour
     public void Hit()
     {
         comboScore += 1;
-        comboText.text = comboScore+"";
+        score += 100 * 1+comboScore/3;
+        UpdateUI();
         comboGroup.transform.DOPunchScale(new Vector2(-0.2f, -0.2f), 0.1f);
-        score += score * comboScore;
+
+    }
+
+    private void UpdateUI()
+    {
+        comboText.text = comboScore + "";
+        scoreText.text = "Score: " + score;
     }
 
     public void Miss()
     {
         comboScore = 0;
-        comboText.text = comboScore +"";
+        UpdateUI();
         comboGroup.transform.DOShakePosition(0.2f,4f);
     }
 }
