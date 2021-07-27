@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerAnimationController : MonoBehaviour
 {
     Vector3 prevPos, velocity;
+    private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
         prevPos = transform.position;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
 
@@ -17,5 +19,14 @@ public class PlayerAnimationController : MonoBehaviour
     {
         velocity = (transform.position - prevPos) / Time.deltaTime;
         prevPos = transform.position;
+        float xDeadzone = 0.1f;
+        if (velocity.x < -xDeadzone)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if(velocity.x > xDeadzone)
+        {
+            spriteRenderer.flipX = false;
+        }
     }
 }
