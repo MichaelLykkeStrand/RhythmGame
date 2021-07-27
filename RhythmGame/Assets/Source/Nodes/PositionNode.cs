@@ -24,7 +24,9 @@ public class PositionNode : MonoBehaviour
     [SerializeField] private GameObject block;
     [SerializeField] private GameObject ghostBlock;
     [SerializeField] private float animationTime;
-    private float t;
+    [SerializeField] private bool isLongNode = false;
+
+
     private Vector3 ghostBlockSpawnpoint;
     private Vector3 blockSpawnpoint;
     public float activationTime;
@@ -40,6 +42,7 @@ public class PositionNode : MonoBehaviour
     public bool IsWall { get => isWall; set => isWall = value; }
     public double VisitTime { get => visitTime; set => visitTime = value; }
     public PositionNode PrevNode { get => prevNode; set => prevNode = value; }
+    public bool IsLongNode { get => isLongNode; set => isLongNode = value; }
 
     public string GetInput()
     {
@@ -78,7 +81,6 @@ public class PositionNode : MonoBehaviour
         if (GameController.Instance.GetAudioSourceTime() > prevNode.activationTime)
         {
             float animTime = prevNode.assignedTime - prevNode.activationTime;
-            
 
             if(didFade == false)
             {

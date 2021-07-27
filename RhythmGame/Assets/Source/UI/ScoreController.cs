@@ -35,7 +35,13 @@ public class ScoreController : MonoBehaviour
         score += 100 * 1+comboScore/3;
         UpdateUI();
         comboGroup.transform.DOPunchScale(new Vector2(-0.2f, -0.2f), 0.1f);
+    }
 
+    public void Hit(int _score)
+    {
+        score += _score;
+        UpdateUI();
+        //comboGroup.transform.DOPunchScale(new Vector2(-0.2f, -0.2f), 0.1f);
     }
 
     private void UpdateUI()

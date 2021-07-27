@@ -1458,6 +1458,11 @@ PrefabInstance:
       propertyPath: jumpPower
       value: -1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5980684244035363557, guid: aefe7b6db8ec7a8419a75fa06595231b,
+        type: 3}
+      propertyPath: isLongNode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5980684244035363558, guid: aefe7b6db8ec7a8419a75fa06595231b,
         type: 3}
       propertyPath: m_Name

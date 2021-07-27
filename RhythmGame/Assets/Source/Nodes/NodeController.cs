@@ -3,6 +3,7 @@ using Melanchall.DryWetMidi.Interaction;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using static PositionNode;
 
 public class NodeController : MonoBehaviour
 {
@@ -59,6 +60,26 @@ public class NodeController : MonoBehaviour
             }
         }
     }
+    PositionNode currentNode;
+    private void FixedUpdate()
+    {
+
+        if (doingLongNote)
+        {
+            double timeStamp = timeStamps[inputIndex];
+            double audioTime = GameController.Instance.GetAudioSourceTime() - (GameController.Instance.inputDelayInMilliseconds / 1000.0);
+            Debug.Log("Doing long note!");
+            if (Input.GetButton(currentNode.PrevNode.GetInput()) && (audioTime - timeStamp) < 0)
+            {
+                
+                ScoreController.Instance.Hit(1);
+            }
+            else
+            {
+                doingLongNote = false;
+            }
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -68,24 +89,12 @@ public class NodeController : MonoBehaviour
         double marginOfError = GameController.Instance.marginOfErrorInSeconds;
         double audioTime = GameController.Instance.GetAudioSourceTime() - (GameController.Instance.inputDelayInMilliseconds / 1000.0);
         string key = nodes[inputIndex].GetInput();
-        PositionNode currentNode = nodes[inputIndex];
+        currentNode = nodes[inputIndex];
 
-        if (doingLongNote )
-        {
-            if (Input.GetButtonDown(key))
-            {
 
-            }
-            else
-            {
-                doingLongNote = false;
-                Miss(currentNode);
-            }
-        }
 
         if (inputIndex < timeStamps.Count)
         {
-
 
             //Handle hit
             try
@@ -94,9 +103,11 @@ public class NodeController : MonoBehaviour
                 {
                     if (Math.Abs(audioTime - timeStamp) < marginOfError) //Redo
                     {
-                        if(currentNode is LongPositionNode)
+                        if(currentNode.IsLongNode)
                         {
+                            CinemachineEffects.instance.Punch();
                             doingLongNote = true;
+                            currentNode.NextNode.input = InputEnum.none;
                         }
                         else
                         {
