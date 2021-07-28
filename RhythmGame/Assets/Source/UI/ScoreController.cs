@@ -10,8 +10,8 @@ public class ScoreController : MonoBehaviour
     public GameObject comboGroup;
     public Text comboText;
     public Text scoreText;
-    public AudioClip hitSound;
-    public AudioClip missSound;
+    public AudioSource hitSound;
+    public AudioSource missSound;
 
     private int comboScore;
     private int score = 0;
@@ -55,6 +55,7 @@ public class ScoreController : MonoBehaviour
         comboScore = 0;
         UpdateUI();
         comboGroup.transform.DOShakePosition(0.2f,4f);
+        missSound.Play();
     }
 
     public int GetCombo()
