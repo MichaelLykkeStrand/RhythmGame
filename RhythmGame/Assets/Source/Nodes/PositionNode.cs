@@ -25,6 +25,7 @@ public class PositionNode : MonoBehaviour
     [SerializeField] private GameObject ghostBlock;
     [SerializeField] private float animationTime;
     [SerializeField] private bool isLongNode = false;
+    [SerializeField] private Transform inputIndicator;
 
 
     private Vector3 ghostBlockSpawnpoint;
@@ -65,6 +66,12 @@ public class PositionNode : MonoBehaviour
         //Position blocks
         ghostBlock.transform.position = block.transform.position;
         block.transform.position = ghostBlockSpawnpoint;
+
+        if (input == InputEnum.none);
+        else if (input == InputEnum.up);
+        else if (input == InputEnum.down) inputIndicator.Rotate(0, 0, 180);
+        else if (input == InputEnum.left) inputIndicator.Rotate(0, 0, 270);
+        else if (input == InputEnum.right) inputIndicator.Rotate(0, 0, 90);
 
     }
 
