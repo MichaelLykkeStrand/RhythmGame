@@ -22,6 +22,7 @@ public class PositionNode : MonoBehaviour
     [SerializeField] private float transitionTime = 1f;
     [SerializeField] private bool isWall = false;
     [SerializeField] private GameObject block;
+    [SerializeField] private GameObject hitBlock;
     [SerializeField] private GameObject ghostBlock;
     [SerializeField] private float animationTime;
     [SerializeField] private bool isLongNode = false;
@@ -59,19 +60,21 @@ public class PositionNode : MonoBehaviour
     {
         block.GetComponent<SpriteRenderer>().enabled = false;
         ghostBlock.GetComponent<SpriteRenderer>().enabled = true;
+        hitBlock.GetComponent<SpriteRenderer>().enabled = false;
 
         blockSpawnpoint = new Vector3(block.transform.position.x, block.transform.position.y);
         ghostBlockSpawnpoint = new Vector3(ghostBlock.transform.position.x, ghostBlock.transform.position.y);
 
         //Position blocks
         ghostBlock.transform.position = block.transform.position;
+        hitBlock.transform.position = ghostBlock.transform.position;
         block.transform.position = ghostBlockSpawnpoint;
 
         if (input == InputEnum.none);
         else if (input == InputEnum.up);
         else if (input == InputEnum.down) inputIndicator.Rotate(0, 0, 180);
-        else if (input == InputEnum.left) inputIndicator.Rotate(0, 0, 270);
-        else if (input == InputEnum.right) inputIndicator.Rotate(0, 0, 90);
+        else if (input == InputEnum.left) inputIndicator.Rotate(0, 0, 90);
+        else if (input == InputEnum.right) inputIndicator.Rotate(0, 0, 270);
 
     }
 
@@ -118,6 +121,7 @@ public class PositionNode : MonoBehaviour
     //TODO growth animation stuff
     public void Hit()
     {
-
+        hitBlock.GetComponent<SpriteRenderer>().enabled = true;
+        block.GetComponent<SpriteRenderer>().enabled = false;
     }
 }

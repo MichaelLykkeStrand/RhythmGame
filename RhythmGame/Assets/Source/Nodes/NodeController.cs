@@ -89,7 +89,7 @@ public class NodeController : MonoBehaviour
         double marginOfError = GameController.Instance.marginOfErrorInSeconds;
         double audioTime = GameController.Instance.GetAudioSourceTime() - (GameController.Instance.inputDelayInMilliseconds / 1000.0);
         currentNode = nodes[inputIndex];
-        string key = currentNode.NextNode.GetInput();
+        string key = currentNode.GetInput();
         
 
 
