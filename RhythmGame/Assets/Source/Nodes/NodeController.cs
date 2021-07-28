@@ -53,7 +53,7 @@ public class NodeController : MonoBehaviour
                 try
                 {
                     PositionNode node = nodes[i];
-                    node.activationTime = (metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f) - 0.5f;
+                    node.activationTime = (metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f) - 1f;
                     node.assignedTime = (metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f);
                 }
                 catch (Exception){}

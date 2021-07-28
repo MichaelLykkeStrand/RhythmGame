@@ -87,10 +87,12 @@ public class PositionNode : MonoBehaviour
             blockSpriteRenderer.enabled = true;
             return;
         }
+
+
         //Float in animation
-        if (GameController.Instance.GetAudioSourceTime() > prevNode.activationTime)
+        if (GameController.Instance.GetAudioSourceTime() > activationTime)
         {
-            float animTime = prevNode.assignedTime - prevNode.activationTime;
+            float animTime = assignedTime - activationTime;
 
             if(didFade == false)
             {
