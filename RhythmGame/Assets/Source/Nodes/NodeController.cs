@@ -88,8 +88,9 @@ public class NodeController : MonoBehaviour
         double timeStamp = timeStamps[inputIndex];
         double marginOfError = GameController.Instance.marginOfErrorInSeconds;
         double audioTime = GameController.Instance.GetAudioSourceTime() - (GameController.Instance.inputDelayInMilliseconds / 1000.0);
-        string key = nodes[inputIndex].GetInput();
         currentNode = nodes[inputIndex];
+        string key = currentNode.GetInput();
+        
 
 
 
@@ -107,7 +108,7 @@ public class NodeController : MonoBehaviour
                         {
                             CinemachineEffects.instance.Punch();
                             doingLongNote = true;
-                            currentNode.NextNode.input = InputEnum.none;
+                            ScoreController.Instance.Hit();
                         }
                         else
                         {
