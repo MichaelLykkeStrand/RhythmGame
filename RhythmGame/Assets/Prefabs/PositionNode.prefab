@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5980684244035363556}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7838009880864347460
 SpriteRenderer:
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -3309781605116015348, guid: 6e0b4b2be3a81cd43a6fcb1a1e649ca2,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -191,7 +191,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 8977788685570267793}
   m_Father: {fileID: 5980684244035363556}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -276,7 +277,6 @@ Transform:
   m_Children:
   - {fileID: 4948530308970987730}
   - {fileID: 3914939941273774565}
-  - {fileID: 8977788685570267793}
   - {fileID: 8575925441198627068}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -303,7 +303,7 @@ MonoBehaviour:
   ghostBlock: {fileID: 1311936286403989879}
   animationTime: 0
   isLongNode: 0
-  inputIndicator: {fileID: 8977788685570267793}
+  inputIndicator: {fileID: 8490578941083880985}
   activationTime: 0
   assignedTime: 0
   visitTime: 0
@@ -335,11 +335,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8490578941083880985}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.015, y: -0.728, z: 0}
+  m_LocalPosition: {x: 0.015, y: -0.22799993, z: 0}
   m_LocalScale: {x: 0.4583385, y: 0.4583385, z: 0.4583385}
   m_Children: []
-  m_Father: {fileID: 5980684244035363556}
-  m_RootOrder: 2
+  m_Father: {fileID: 4948530308970987730}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7939332686333456793
 SpriteRenderer:

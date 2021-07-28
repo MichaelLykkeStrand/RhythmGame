@@ -7,7 +7,7 @@ using DG.Tweening;
 public class PositionNode : MonoBehaviour
 {
     [System.Serializable]
-    public enum InputEnum // your custom enumeration
+    public enum InputEnum
     {
         none,
         up,
@@ -26,7 +26,7 @@ public class PositionNode : MonoBehaviour
     [SerializeField] private GameObject ghostBlock;
     [SerializeField] private float animationTime;
     [SerializeField] private bool isLongNode = false;
-    [SerializeField] private Transform inputIndicator;
+    [SerializeField] private GameObject inputIndicator;
 
 
     private Vector3 ghostBlockSpawnpoint;
@@ -59,6 +59,7 @@ public class PositionNode : MonoBehaviour
     void Start()
     {
         block.GetComponent<SpriteRenderer>().enabled = false;
+        inputIndicator.GetComponent<SpriteRenderer>().enabled = false;
         ghostBlock.GetComponent<SpriteRenderer>().enabled = true;
         hitBlock.GetComponent<SpriteRenderer>().enabled = false;
 
@@ -72,9 +73,9 @@ public class PositionNode : MonoBehaviour
 
         if (input == InputEnum.none);
         else if (input == InputEnum.up);
-        else if (input == InputEnum.down) inputIndicator.Rotate(0, 0, 180);
-        else if (input == InputEnum.left) inputIndicator.Rotate(0, 0, 90);
-        else if (input == InputEnum.right) inputIndicator.Rotate(0, 0, 270);
+        else if (input == InputEnum.down) inputIndicator.transform.Rotate(0, 0, 180);
+        else if (input == InputEnum.left) inputIndicator.transform.Rotate(0, 0, 90);
+        else if (input == InputEnum.right) inputIndicator.transform.Rotate(0, 0, 270);
 
     }
 
@@ -110,6 +111,7 @@ public class PositionNode : MonoBehaviour
             }
 
             blockSpriteRenderer.enabled = true;
+            inputIndicator.GetComponent<SpriteRenderer>().enabled = true;
         }
 
         
@@ -125,5 +127,7 @@ public class PositionNode : MonoBehaviour
     {
         hitBlock.GetComponent<SpriteRenderer>().enabled = true;
         block.GetComponent<SpriteRenderer>().enabled = false;
+        ghostBlock.GetComponent<SpriteRenderer>().enabled = false;
+        inputIndicator.GetComponent<SpriteRenderer>().enabled = false;
     }
 }

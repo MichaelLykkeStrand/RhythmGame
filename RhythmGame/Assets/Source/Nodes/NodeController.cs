@@ -15,6 +15,7 @@ public class NodeController : MonoBehaviour
     private PlayerBunnyMovement playerMovement;
     int inputIndex = 0;
     private bool doingLongNote = false;
+    [SerializeField] private float nodeAnimSpeed = 1f;
 
     public bool IsRunning { get => isRunning; set => isRunning = value; }
 
@@ -53,7 +54,7 @@ public class NodeController : MonoBehaviour
                 try
                 {
                     PositionNode node = nodes[i];
-                    node.activationTime = (metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f) - 1f;
+                    node.activationTime = (metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f) - nodeAnimSpeed;
                     node.assignedTime = (metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f);
                 }
                 catch (Exception){}
