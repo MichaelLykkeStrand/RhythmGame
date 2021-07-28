@@ -13,8 +13,8 @@ public class ScoreController : MonoBehaviour
     public AudioClip hitSound;
     public AudioClip missSound;
 
-    static int comboScore;
-    static int score = 100;
+    private int comboScore;
+    private int score = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,5 +55,15 @@ public class ScoreController : MonoBehaviour
         comboScore = 0;
         UpdateUI();
         comboGroup.transform.DOShakePosition(0.2f,4f);
+    }
+
+    public int GetCombo()
+    {
+        return this.comboScore;
+    }
+
+    public int GetScore()
+    {
+        return this.score;
     }
 }
