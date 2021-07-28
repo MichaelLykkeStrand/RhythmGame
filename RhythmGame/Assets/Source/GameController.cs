@@ -68,8 +68,7 @@ public class GameController : MonoBehaviour
         }
         nodeController = GameObject.FindGameObjectWithTag("NodeController").GetComponent<NodeController>();
         ReadFromFile(song);
-
-        StartGame();
+        
     }
 
     async private void ReadFromFile(Song song)
@@ -81,7 +80,7 @@ public class GameController : MonoBehaviour
         audioSource.clip = audioClip;
         Debug.Log("Finished loading song!");
         TransitionController.SetLoading(false);
-
+        StartGame();
     }
 
     async Task<AudioClip> LoadClip(string path)
