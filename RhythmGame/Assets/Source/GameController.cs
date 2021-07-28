@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
 
     public void StartSong(Song song)
     {
+
         //Load premade scene
         if(song.associatedScene.Length > 0)
         {
@@ -67,6 +68,7 @@ public class GameController : MonoBehaviour
         }
         nodeController = GameObject.FindGameObjectWithTag("NodeController").GetComponent<NodeController>();
         ReadFromFile(song);
+
         StartGame();
     }
 
@@ -78,6 +80,7 @@ public class GameController : MonoBehaviour
         AudioClip audioClip = await LoadClip(clipPath);
         audioSource.clip = audioClip;
         Debug.Log("Finished loading song!");
+        TransitionController.SetLoading(false);
 
     }
 

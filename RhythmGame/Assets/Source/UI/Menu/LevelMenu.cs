@@ -30,6 +30,7 @@ public class LevelMenu : MonoBehaviour
 
     private void OnLevelButtonClicked(Song song)
     {
+        TransitionController.SetLoading(true);
         GameController.Instance.StartSong(song);
     }
 

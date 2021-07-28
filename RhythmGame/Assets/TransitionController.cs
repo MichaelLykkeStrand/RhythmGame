@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class TransitionController : MonoBehaviour
 {
     private static Image image;
-    private static bool isLoading = false;
+    [SerializeField] private static bool isLoading = false;
     private const float minAlpha = 0;
     private const float maxAlpha = 1;
     [SerializeField] private const float animationTime = 0.3f;
@@ -16,7 +16,7 @@ public class TransitionController : MonoBehaviour
     {
         DontDestroyOnLoad(this);
         image = GetComponent<Image>();
-        image.gameObject.SetActive(false);
+        image.enabled = false;
     }
 
     // Start is called before the first frame update
@@ -25,6 +25,7 @@ public class TransitionController : MonoBehaviour
 
     }
 
+
     public static void SetLoadImage(Image _image)
     {
         image = _image;
@@ -32,9 +33,10 @@ public class TransitionController : MonoBehaviour
 
     public static void SetLoading(bool _isLoading)
     {
+        Debug.LogWarning("Loading called: Iloading= " + isLoading);
         if (_isLoading && !isLoading)
         {
-            image.gameObject.SetActive(true);
+            image.enabled = true;
             isLoading = true;
             float alpha = 0;
             Tween t = DOTween.To(() => alpha, x => alpha = x, maxAlpha, animationTime);
@@ -51,6 +53,7 @@ public class TransitionController : MonoBehaviour
         else if(!_isLoading && isLoading)
         {
             float alpha = 1;
+            isLoading = false;
             Tween t = DOTween.To(() => alpha, x => alpha = x, minAlpha, animationTime);
             t.OnUpdate(() =>
             {
@@ -60,8 +63,9 @@ public class TransitionController : MonoBehaviour
             });
             t.OnComplete(() => {
                 //TODO callback?
-                image.gameObject.SetActive(false);
+                image.enabled = false;
             });
         }
     }
+
 }
