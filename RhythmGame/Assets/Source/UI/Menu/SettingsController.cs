@@ -20,7 +20,7 @@ public class SettingsController : MonoBehaviour
         audioSource.Play();
         TransitionController.SetLoading(false);
         instance = this;
-        slider.minValue = 0.2f;
+        slider.minValue = 0.02f;
         slider.maxValue = 1;
         slider.value = GetVolume();
         fullscreenToggle.isOn = IsFullscreen();
