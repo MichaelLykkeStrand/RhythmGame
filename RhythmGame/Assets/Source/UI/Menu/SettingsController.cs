@@ -15,6 +15,7 @@ public class SettingsController : MonoBehaviour
     void Start()
     {
         canvas = GetComponent<Canvas>();
+
         audioSource = GetComponent<AudioSource>();
         audioSource.Play();
         TransitionController.SetLoading(false);
@@ -26,6 +27,7 @@ public class SettingsController : MonoBehaviour
         slider.onValueChanged.AddListener(delegate { VolumeSliderChanged(); });
         fullscreenToggle.onValueChanged.AddListener(delegate { OnFullscreenToggle(); });
         exitButton.onClick.AddListener(delegate { Close(); });
+        Close();
     }
 
     private void VolumeSliderChanged()
@@ -50,6 +52,8 @@ public class SettingsController : MonoBehaviour
     public void Open()
     {
         canvas.enabled = true;
+        canvas.referencePixelsPerUnit = 101;
+        canvas.referencePixelsPerUnit = 100;
     }
 
     public void Close()
