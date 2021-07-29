@@ -47,6 +47,11 @@ public class SettingsController : MonoBehaviour
         }
     }
 
+    public void Open()
+    {
+        canvas.enabled = true;
+    }
+
     public void Close()
     {
         canvas.enabled = false;

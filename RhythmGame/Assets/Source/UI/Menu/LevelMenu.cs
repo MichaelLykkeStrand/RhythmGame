@@ -7,6 +7,7 @@ public class LevelMenu : MonoBehaviour
 {
     public GameObject content;
     public GameObject buttonPrefab;
+    [SerializeField]private GameObject exitPrompt;
     private ISongRepository songRepository;
     // Start is called before the first frame update
     void Start()
@@ -37,5 +38,10 @@ public class LevelMenu : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Exit()
+    {
+        exitPrompt.SetActive(true);
     }
 }
