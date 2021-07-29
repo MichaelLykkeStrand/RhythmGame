@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuController : MonoBehaviour
 {
@@ -29,5 +30,27 @@ public class PauseMenuController : MonoBehaviour
             canvas.enabled = false;
             gameController.ResumeGame();
         }
+    }
+
+    public void OnExitButtonClick()
+    {
+        DestroyAllDontDestroyOnLoadObjects();
+        SceneManager.LoadScene("LevelBrowser");
+    }
+
+    public void OnResumeButtonClick()
+    {
+        canvas.enabled = false;
+        
+        gameController.ResumeGame();
+    }
+
+    private void DestroyAllDontDestroyOnLoadObjects()
+    {
+        var go = new GameObject();
+        DontDestroyOnLoad(go);
+
+        foreach (var root in go.scene.GetRootGameObjects())
+            Destroy(root);
     }
 }
