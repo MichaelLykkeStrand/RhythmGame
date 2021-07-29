@@ -1159,7 +1159,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &7789422339400130337
 MonoBehaviour:
@@ -1213,7 +1213,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 6220364631335624291}
-  fullscreenToggle: {fileID: 0}
+  fullscreenToggle: {fileID: 3930559226371850309}
+  exitButton: {fileID: 5621906619962894959}
 --- !u!222 &6175763650676993004
 CanvasRenderer:
   m_ObjectHideFlags: 0

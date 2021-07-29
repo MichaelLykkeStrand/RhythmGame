@@ -18,6 +18,8 @@ public class ScoreController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        missSound.volume = SettingsController.instance.GetVolume();
+
         Instance = this;
         comboScore = 0;
         comboText.text = comboScore+"";

@@ -14,7 +14,7 @@ public class SettingsController : MonoBehaviour
     {
         TransitionController.SetLoading(false);
         instance = this;
-        slider.maxValue = 0;
+        slider.minValue = 0.2f;
         slider.maxValue = 1;
         slider.value = GetVolume();
         fullscreenToggle.isOn = IsFullscreen();
