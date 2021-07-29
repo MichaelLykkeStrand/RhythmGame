@@ -106,6 +106,7 @@ public class GameController : MonoBehaviour
     public void StartAudio()
     {
         Instance.audioSource.Play();
+        audioSource.volume = SettingsController.instance.GetVolume();
     }
 
     public void SetAudioTime(float time)
