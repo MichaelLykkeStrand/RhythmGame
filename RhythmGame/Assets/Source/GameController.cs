@@ -29,13 +29,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && nodeController.IsRunning == true)
-        {
-            PauseGame();
-        } else if (Input.GetKeyDown(KeyCode.Escape) && nodeController.IsRunning == false)
-        {
-            ResumeGame();
-        }
+
         
     }
 
@@ -140,16 +134,26 @@ public class GameController : MonoBehaviour
 
     public void PauseGame()
     {
-        nodeController.IsRunning = false;
-        audioSource.Pause();
-        Time.timeScale = 0;
+        if(nodeController.IsRunning == true)
+        {
+            nodeController.IsRunning = false;
+            audioSource.Pause();
+            Time.timeScale = 0;
+        }
+    }
+
+    public bool IsRunning()
+    {
+        return nodeController.IsRunning;
     }
 
     public void ResumeGame()
     {
-        nodeController.IsRunning = true;
-        audioSource.UnPause();
-        Time.timeScale = 1;
+        if(nodeController.IsRunning == false)
+        {
+            nodeController.IsRunning = true;
+            audioSource.UnPause();
+            Time.timeScale = 1;
+        }
     }
-
 }
