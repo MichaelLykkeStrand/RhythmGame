@@ -6,12 +6,17 @@ using UnityEngine.UI;
 public class SettingsController : MonoBehaviour
 {
     public static SettingsController instance;
+    private AudioSource audioSource;
     [SerializeField] Slider slider;
     [SerializeField] Toggle fullscreenToggle;
     [SerializeField] Button exitButton;
+    private Canvas canvas;
     // Start is called before the first frame update
     void Start()
     {
+        canvas = GetComponent<Canvas>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
         TransitionController.SetLoading(false);
         instance = this;
         slider.minValue = 0.2f;
@@ -26,6 +31,7 @@ public class SettingsController : MonoBehaviour
     private void VolumeSliderChanged()
     {
         SetVolume(slider.value);
+        audioSource.volume = GetVolume();
     }
 
     private void OnFullscreenToggle()
@@ -43,7 +49,7 @@ public class SettingsController : MonoBehaviour
 
     public void Close()
     {
-        gameObject.SetActive(false);
+        canvas.enabled = false;
     }
 
     public void SetVolume(float volume)
