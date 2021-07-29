@@ -31,6 +31,7 @@ public class PositionNode : MonoBehaviour
 
     private Vector3 ghostBlockSpawnpoint;
     private Vector3 blockSpawnpoint;
+    private ParticleSystem particleSystem;
     public float activationTime;
     public float assignedTime;
     [SerializeField] private double visitTime;
@@ -58,10 +59,12 @@ public class PositionNode : MonoBehaviour
 
     void Start()
     {
+        particleSystem = GetComponent<ParticleSystem>();
         block.GetComponent<SpriteRenderer>().enabled = false;
         inputIndicator.GetComponent<SpriteRenderer>().enabled = false;
         ghostBlock.GetComponent<SpriteRenderer>().enabled = true;
         hitBlock.GetComponent<SpriteRenderer>().enabled = false;
+        
 
         blockSpawnpoint = new Vector3(block.transform.position.x, block.transform.position.y);
         ghostBlockSpawnpoint = new Vector3(ghostBlock.transform.position.x, ghostBlock.transform.position.y);
@@ -125,6 +128,7 @@ public class PositionNode : MonoBehaviour
     //TODO growth animation stuff
     public void Hit()
     {
+        particleSystem.Play();
         hitBlock.GetComponent<SpriteRenderer>().enabled = true;
         block.GetComponent<SpriteRenderer>().enabled = false;
         ghostBlock.GetComponent<SpriteRenderer>().enabled = false;
