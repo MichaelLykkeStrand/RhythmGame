@@ -230,6 +230,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4649953821170351976, guid: a2e81a3859ab8f8419a6ec7ea5050c06,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.19254656
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649953821170351976, guid: a2e81a3859ab8f8419a6ec7ea5050c06,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.6792453
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649953821170351976, guid: a2e81a3859ab8f8419a6ec7ea5050c06,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.17621931
+      objectReference: {fileID: 0}
     - target: {fileID: 4649953822201160450, guid: a2e81a3859ab8f8419a6ec7ea5050c06,
         type: 3}
       propertyPath: m_Text
@@ -359,6 +374,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Button (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649953821170351976, guid: a2e81a3859ab8f8419a6ec7ea5050c06,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.17443931
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649953821170351976, guid: a2e81a3859ab8f8419a6ec7ea5050c06,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.20404324
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649953821170351976, guid: a2e81a3859ab8f8419a6ec7ea5050c06,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.754717
       objectReference: {fileID: 0}
     - target: {fileID: 4649953822201160450, guid: a2e81a3859ab8f8419a6ec7ea5050c06,
         type: 3}

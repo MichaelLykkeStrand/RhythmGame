@@ -17,6 +17,7 @@ public class SettingsController : MonoBehaviour
         canvas = GetComponent<Canvas>();
 
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = GetVolume();
         audioSource.Play();
         TransitionController.SetLoading(false);
         instance = this;
