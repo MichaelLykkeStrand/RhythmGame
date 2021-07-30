@@ -15,7 +15,7 @@ public class PositionNode : MonoBehaviour
         left,
         right
     };
-
+    [SerializeField] private Plant plant;
     [SerializeField] private PositionNode nextNode;
     [SerializeField] private PositionNode prevNode;
     [SerializeField] private float jumpPower;
@@ -129,6 +129,14 @@ public class PositionNode : MonoBehaviour
     public void Hit()
     {
         particleSystem.Play();
+        try
+        {
+            plant.Grow();
+        }
+        catch (System.Exception)
+        {
+        }
+        
         hitBlock.GetComponent<SpriteRenderer>().enabled = true;
         block.GetComponent<SpriteRenderer>().enabled = false;
         ghostBlock.GetComponent<SpriteRenderer>().enabled = false;
