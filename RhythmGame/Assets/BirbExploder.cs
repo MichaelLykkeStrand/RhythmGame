@@ -35,8 +35,6 @@ public class BirbExploder : MonoBehaviour
             }
             catch (System.Exception)
             {
-
-                throw;
             }
             //Select random bird
         }
