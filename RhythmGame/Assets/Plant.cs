@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Plant : MonoBehaviour
+public class Plant : MonoBehaviour, IGrowable
 {
     private Animator anim;
     // Start is called before the first frame update

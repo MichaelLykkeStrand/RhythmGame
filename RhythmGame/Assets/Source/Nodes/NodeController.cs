@@ -91,9 +91,6 @@ public class NodeController : MonoBehaviour
         double audioTime = GameController.Instance.GetAudioSourceTime() - (GameController.Instance.inputDelayInMilliseconds / 1000.0);
         currentNode = nodes[inputIndex];
         string key = currentNode.GetInput();
-        
-
-
 
         if (inputIndex < timeStamps.Count)
         {
@@ -110,6 +107,7 @@ public class NodeController : MonoBehaviour
                             CinemachineEffects.instance.Punch();
                             doingLongNote = true;
                             ScoreController.Instance.Hit();
+                            currentNode.Hit();
                         }
                         else
                         {
@@ -130,7 +128,7 @@ public class NodeController : MonoBehaviour
             if (timeStamp + marginOfError <= audioTime)
             {
                 
-                if (key!= "")
+                if (key!= "" && !currentNode.IsLongNode)
                 {
                     NodePassed(currentNode, timeStamp);
                     Miss(currentNode);

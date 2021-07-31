@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseMenuController : MonoBehaviour
+public class PauseMenuController : MonoBehaviour, IWindow
 {
     GameController gameController = GameController.Instance;
     private Canvas canvas;
@@ -52,5 +52,15 @@ public class PauseMenuController : MonoBehaviour
 
         foreach (var root in go.scene.GetRootGameObjects())
             Destroy(root);
+    }
+
+    public void Open()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Close()
+    {
+        throw new System.NotImplementedException();
     }
 }
