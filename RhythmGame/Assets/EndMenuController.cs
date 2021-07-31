@@ -8,6 +8,10 @@ public class EndMenuController : MonoBehaviour, IWindow
 {
 
     public static EndMenuController instance;
+    [SerializeField] GameObject noCarrot;
+    [SerializeField] GameObject bronzeCarrot;
+    [SerializeField] GameObject silverCarrot;
+    [SerializeField] GameObject goldenCarrot;
     [SerializeField] Text score;
     // Start is called before the first frame update
     void Start()
@@ -35,7 +39,26 @@ public class EndMenuController : MonoBehaviour, IWindow
     public void Open()
     {
         gameObject.SetActive(true);
-        score.text = ScoreController.Instance.GetScore().ToString();
+        int _score = ScoreController.Instance.GetScore();
+        Song song = GameController.Instance.GetCurrentSong();
+        score.text = _score.ToString();
+        if(_score > song.gold)
+        {
+            goldenCarrot.SetActive(true);
+            return;
+        }else if(_score < song.gold && _score > song.silver)
+        {
+            silverCarrot.SetActive(true);
+            return;
+        }
+        else if(_score > song.bronze)
+        {
+            bronzeCarrot.SetActive(true);
+        }
+        else
+        {
+            noCarrot.SetActive(true);
+        }
     }
 
     public void Close()
