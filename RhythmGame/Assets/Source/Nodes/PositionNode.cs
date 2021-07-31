@@ -74,7 +74,7 @@ public class PositionNode : MonoBehaviour
         hitBlock.transform.position = ghostBlock.transform.position;
         block.transform.position = ghostBlockSpawnpoint;
 
-        if (input == InputEnum.none);
+        if (input == InputEnum.none) inputIndicator.SetActive(false);
         else if (input == InputEnum.up);
         else if (input == InputEnum.down) inputIndicator.transform.Rotate(0, 0, 180);
         else if (input == InputEnum.left) inputIndicator.transform.Rotate(0, 0, 90);
