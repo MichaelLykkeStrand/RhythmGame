@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelMenu : MonoBehaviour
+public class LevelMenu : MonoBehaviour, IWindow
 {
     public GameObject content;
     public GameObject buttonPrefab;
@@ -43,5 +43,15 @@ public class LevelMenu : MonoBehaviour
     public void Exit()
     {
         exitPrompt.SetActive(true);
+    }
+
+    public void Open()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Close()
+    {
+        throw new System.NotImplementedException();
     }
 }

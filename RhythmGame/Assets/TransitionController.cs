@@ -26,7 +26,7 @@ public class TransitionController : MonoBehaviour
     }
 
 
-    public static void SetLoadImage(Image _image)
+    public static void SetLoadingImage(Image _image)
     {
         image = _image;
     }
