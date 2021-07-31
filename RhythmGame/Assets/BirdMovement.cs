@@ -5,6 +5,7 @@ using UnityEngine;
 public class BirdMovement : MonoBehaviour, IExplosion
 {
     [SerializeField] float speed = 2f;
+    [SerializeField] int color = 0;
     private Animator animator;
 
     public void Explode()
@@ -17,6 +18,7 @@ public class BirdMovement : MonoBehaviour, IExplosion
     void Start()
     {
         animator = GetComponent<Animator>();
+        animator.SetInteger("Color", color);
     }
 
     // Update is called once per frame
