@@ -105,6 +105,7 @@ public class PositionNode : MonoBehaviour
 
             if(didFade == false)
             {
+                inputIndicator.GetComponent<SpriteRenderer>().enabled = true;
                 block.transform.DOMove(blockSpawnpoint, animTime); //Move into didFade for lerp
                 didFade = true;
                 float alpha = 0;
@@ -116,10 +117,14 @@ public class PositionNode : MonoBehaviour
                     Color newColor = new Color(currentColor.r, currentColor.g, currentColor.b, alpha);
                     blockSpriteRenderer.color = newColor;
                 });
+                t.OnComplete(()=>
+                {
+                    inputIndicator.GetComponent<SpriteRenderer>().enabled = false;
+                });
             }
 
-            blockSpriteRenderer.enabled = true;
-            inputIndicator.GetComponent<SpriteRenderer>().enabled = true;
+            //blockSpriteRenderer.enabled = true;
+            
         }
 
         
