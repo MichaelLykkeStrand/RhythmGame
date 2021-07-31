@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExitPrompt : MonoBehaviour
+public class ExitPrompt : MonoBehaviour, IWindow
 {
     // Start is called before the first frame update
     void Start()
@@ -21,13 +21,14 @@ public class ExitPrompt : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    public void GoBack()
-    {
-        gameObject.SetActive(false);
-    }
-
     public void Exit()
     {
+
         Application.Quit();
+    }
+
+    public void Close()
+    {
+        gameObject.SetActive(false);
     }
 }

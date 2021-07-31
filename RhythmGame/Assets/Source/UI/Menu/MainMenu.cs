@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : MonoBehaviour, IWindow
 {
 
     // Start is called before the first frame update

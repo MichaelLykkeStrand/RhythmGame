@@ -42,7 +42,7 @@ PrefabInstance:
     - target: {fileID: 462190631765281321, guid: 9b3efa1e3d3ec1444b7aacbe61b754e2,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GoBack
+      value: Close
       objectReference: {fileID: 0}
     - target: {fileID: 462190631765281321, guid: 9b3efa1e3d3ec1444b7aacbe61b754e2,
         type: 3}

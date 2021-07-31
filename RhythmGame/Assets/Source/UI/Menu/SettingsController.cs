@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingsController : MonoBehaviour
+public class SettingsController : MonoBehaviour, IWindow
 {
     public static SettingsController instance;
     private AudioSource audioSource;
