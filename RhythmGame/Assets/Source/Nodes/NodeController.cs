@@ -71,7 +71,7 @@ public class NodeController : MonoBehaviour
             double timeStamp = timeStamps[inputIndex];
             double audioTime = GameController.Instance.GetAudioSourceTime() - (GameController.Instance.inputDelayInMilliseconds / 1000.0);
             Debug.Log("Doing long note!");
-            if (Input.GetButton(currentNode.PrevNode.GetInput()) && (audioTime - timeStamp) < 0)
+            if (Input.GetButton(currentNode.PrevNode.GetInput()))
             {
                 
                 ScoreController.Instance.Hit(1);
