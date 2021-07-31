@@ -160,6 +160,7 @@ public class GameController : MonoBehaviour, IGameController
     {
         if(nodeController.IsRunning == true)
         {
+            checkIfFinished = false;
             nodeController.IsRunning = false;
             audioSource.Pause();
             Time.timeScale = 0;
@@ -178,6 +179,7 @@ public class GameController : MonoBehaviour, IGameController
             nodeController.IsRunning = true;
             audioSource.UnPause();
             Time.timeScale = 1;
+            checkIfFinished = true;
         }
     }
 }
