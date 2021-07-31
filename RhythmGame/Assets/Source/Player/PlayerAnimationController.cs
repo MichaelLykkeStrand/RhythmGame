@@ -6,11 +6,13 @@ public class PlayerAnimationController : MonoBehaviour
 {
     Vector3 prevPos, velocity;
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
 
     private void Awake()
     {
         prevPos = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
 
@@ -28,5 +30,7 @@ public class PlayerAnimationController : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
+
+        animator.SetFloat("VelocityY", velocity.y);
     }
 }
