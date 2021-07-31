@@ -15,6 +15,10 @@ public class PositionNode : MonoBehaviour
         left,
         right
     };
+    [SerializeField] private Sprite perfectSprite;
+    [SerializeField] private Sprite okaySprite;
+    [SerializeField] private Sprite missSprite;
+
     [SerializeField] private Plant plant;
     [SerializeField] private PositionNode nextNode;
     [SerializeField] private PositionNode prevNode;
@@ -27,6 +31,7 @@ public class PositionNode : MonoBehaviour
     [SerializeField] private float animationTime;
     [SerializeField] private bool isLongNode = false;
     [SerializeField] private GameObject inputIndicator;
+    [SerializeField] private HitIndicator hitIndicator;
 
 
     private Vector3 ghostBlockSpawnpoint;
@@ -126,7 +131,7 @@ public class PositionNode : MonoBehaviour
     }
 
     //TODO growth animation stuff
-    public void Hit()
+    public void Hit(float accuracy)
     {
         particleSystem.Play();
         try
@@ -136,10 +141,26 @@ public class PositionNode : MonoBehaviour
         catch (System.Exception)
         {
         }
+
+        Debug.Log("Acc: "+accuracy);
+
+        if(accuracy <= 0.1 && accuracy >= -0.1)
+        {
+            hitIndicator.Hit(perfectSprite);
+        }
+        else
+        {
+            hitIndicator.Hit(okaySprite);
+        }
         
         hitBlock.GetComponent<SpriteRenderer>().enabled = true;
         block.GetComponent<SpriteRenderer>().enabled = false;
         ghostBlock.GetComponent<SpriteRenderer>().enabled = false;
         inputIndicator.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    public void Miss()
+    {
+        hitIndicator.Hit(missSprite);
     }
 }

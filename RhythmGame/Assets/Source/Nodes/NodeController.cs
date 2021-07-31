@@ -13,6 +13,7 @@ public class NodeController : MonoBehaviour
     private PositionNode[] nodes;
     private PositionNode currentCheckpoint;
     private PlayerBunnyMovement playerMovement;
+
     int inputIndex = 0;
     private bool doingLongNote = false;
     [SerializeField] private float nodeAnimSpeed = 1f;
@@ -102,18 +103,21 @@ public class NodeController : MonoBehaviour
                 {
                     if (Math.Abs(audioTime - timeStamp) < marginOfError) //Redo
                     {
-                        if(currentNode.IsLongNode)
+                        float accuracy = (float)Math.Abs(audioTime - timeStamp);
+                        if (currentNode.IsLongNode)
                         {
                             CinemachineEffects.instance.Punch();
                             doingLongNote = true;
                             ScoreController.Instance.Hit();
-                            currentNode.Hit();
+                            currentNode.Hit(accuracy);
                         }
                         else
                         {
+                            
                             NodePassed(currentNode, timeStamp);
-                            Hit(currentNode);
+                            Hit(currentNode, accuracy);
                             print($"Hit on {inputIndex} note");
+                            
                         }
 
                     }
@@ -158,18 +162,19 @@ public class NodeController : MonoBehaviour
         inputIndex++;
     }
 
-    private void Hit(PositionNode node)
+    private void Hit(PositionNode node, float accuracy)
     {
         playerMovement.Move();
         ScoreController.Instance.Hit();
-        node.Hit();
+        node.Hit(accuracy);
         CinemachineEffects.instance.Punch();
 
     }
     private void Miss(PositionNode node)
     {
         playerMovement.Move();
-        ScoreController.Instance.Miss();    
+        ScoreController.Instance.Miss();
+        node.Miss();
         
     }
 
