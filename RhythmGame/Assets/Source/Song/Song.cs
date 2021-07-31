@@ -9,6 +9,9 @@ public class Song
     public string songName;
     public string associatedScene;
     public string author;
+    public int bronze;
+    public int silver;
+    public int gold;
     public int difficulty;
     public string[] key;
 }

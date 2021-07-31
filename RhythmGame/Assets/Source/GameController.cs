@@ -10,7 +10,8 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour, IGameController
 {
-    
+
+    private Song currentSong;
     public static GameController Instance;
     [SerializeField] private GameObject endScreen;
     [SerializeField] private AudioSource audioSource;
@@ -46,9 +47,9 @@ public class GameController : MonoBehaviour, IGameController
 
     public void StartSong(Song song)
     {
-
+        currentSong = song;
         //Load premade scene
-        if(song.associatedScene.Length > 0)
+        if (song.associatedScene.Length > 0)
         {
             StartCoroutine(LoadAsyncScene(song));
         }
@@ -57,6 +58,11 @@ public class GameController : MonoBehaviour, IGameController
             throw new NotImplementedException();
         }
        
+    }
+
+    public Song GetCurrentSong()
+    {
+        return currentSong;
     }
 
     IEnumerator LoadAsyncScene(Song song)

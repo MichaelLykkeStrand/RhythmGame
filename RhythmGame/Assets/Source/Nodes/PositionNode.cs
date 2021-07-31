@@ -141,6 +141,7 @@ public class PositionNode : MonoBehaviour
         particleSystem.Play();
         try
         {
+            BirbExploder.instance.Explode();
             plant.Grow();
         }
         catch (System.Exception)

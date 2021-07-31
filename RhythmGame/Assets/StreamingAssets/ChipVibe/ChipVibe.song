@@ -2,6 +2,9 @@
 <Song xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <songName>ChipVibe</songName>
   <associatedScene>SampleScene</associatedScene>
+  <bronze>5000</bronze>
+  <silver>6000</silver>
+  <gold>7000</gold>
   <author>Alex</author>
   <difficulty>3</difficulty>
 </Song>
