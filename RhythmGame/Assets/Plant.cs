@@ -9,7 +9,7 @@ public class Plant : MonoBehaviour, IGrowable
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -20,6 +20,7 @@ public class Plant : MonoBehaviour, IGrowable
 
     public void Grow()
     {
+        anim = GetComponent<Animator>();
         System.Random random = new System.Random();
         int number = random.Next(3);
         anim.SetInteger("Grow", number);

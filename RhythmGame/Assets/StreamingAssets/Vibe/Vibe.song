@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Song xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <songName>Vibe</songName>
-  <associatedScene>SampleScene</associatedScene>
+  <associatedScene>Scene1</associatedScene>
   <author>Alex</author>
   <difficulty>3</difficulty>
 </Song>

@@ -103,7 +103,7 @@ public class PositionNode : MonoBehaviour
                 block.transform.DOMove(blockSpawnpoint, animTime); //Move into didFade for lerp
                 didFade = true;
                 float alpha = 0;
-                float maxAlpha = 1;
+                float maxAlpha = 0.85f;
                 Tween t = DOTween.To(() => alpha, x => alpha = x, maxAlpha, animTime);
                 t.OnUpdate(() =>
                 {
