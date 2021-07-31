@@ -165,7 +165,6 @@ public class NodeController : MonoBehaviour
     private void Hit(PositionNode node, float accuracy)
     {
         playerMovement.Move();
-        ScoreController.Instance.Hit();
         node.Hit(accuracy);
         CinemachineEffects.instance.Punch();
 

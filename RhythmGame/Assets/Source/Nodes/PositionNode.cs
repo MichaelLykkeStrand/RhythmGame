@@ -152,10 +152,12 @@ public class PositionNode : MonoBehaviour
         if(accuracy <= 0.1 && accuracy >= -0.1)
         {
             hitIndicator.Hit(perfectSprite);
+            ScoreController.Instance.Hit(ScoreController.PERFECT,false);
         }
         else
         {
             hitIndicator.Hit(okaySprite);
+            ScoreController.Instance.Hit(ScoreController.OKAY,false);
         }
         
         hitBlock.GetComponent<SpriteRenderer>().enabled = true;

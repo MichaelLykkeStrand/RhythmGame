@@ -6,6 +6,8 @@ using DG.Tweening;
 
 public class ScoreController : MonoBehaviour
 {
+    public const int PERFECT = 200;
+    public const int OKAY = 100;
     public static ScoreController Instance;
     public GameObject comboGroup;
     public Text comboText;
@@ -15,6 +17,9 @@ public class ScoreController : MonoBehaviour
 
     private int comboScore;
     private int score = 0;
+
+    public int Score { get => score; set => score = value; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,14 +39,22 @@ public class ScoreController : MonoBehaviour
     public void Hit()
     {
         comboScore += 1;
-        score += 100 * 1+comboScore/3;
+        Score += 100 * 1+comboScore/3;
+        UpdateUI();
+        comboGroup.transform.DOPunchScale(new Vector2(-0.2f, -0.2f), 0.1f);
+    }
+
+    public void Hit(int _score, bool silent)
+    {
+        comboScore += 1;
+        Score += _score * 1 + comboScore / 3;
         UpdateUI();
         comboGroup.transform.DOPunchScale(new Vector2(-0.2f, -0.2f), 0.1f);
     }
 
     public void Hit(int _score)
     {
-        score += _score;
+        Score += _score;
         UpdateUI();
         //comboGroup.transform.DOPunchScale(new Vector2(-0.2f, -0.2f), 0.1f);
     }
@@ -49,7 +62,7 @@ public class ScoreController : MonoBehaviour
     private void UpdateUI()
     {
         comboText.text = comboScore + "";
-        scoreText.text = "Score: " + score;
+        scoreText.text = "Score: " + Score;
     }
 
     public void Miss()
@@ -67,6 +80,6 @@ public class ScoreController : MonoBehaviour
 
     public int GetScore()
     {
-        return this.score;
+        return this.Score;
     }
 }

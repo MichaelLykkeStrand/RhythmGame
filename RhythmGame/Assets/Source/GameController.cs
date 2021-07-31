@@ -10,14 +10,16 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour, IGameController
 {
+    
     public static GameController Instance;
+    [SerializeField] private GameObject endScreen;
     [SerializeField] private AudioSource audioSource;
     public float songDelayInSeconds;
     public NodeController nodeController;
     public static MidiFile midiFile;
     public int inputDelayInMilliseconds;
-
     public float marginOfErrorInSeconds;
+    private bool checkIfFinished = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +31,16 @@ public class GameController : MonoBehaviour, IGameController
 
     private void Update()
     {
-
+        if(checkIfFinished == false)
+        {
+            return;
+        }
+        if (IsFinished())
+        {
+            Debug.Log("Game ended");
+            endScreen.GetComponent<IWindow>().Open();
+            checkIfFinished = false;
+        }
         
     }
 
@@ -107,6 +118,7 @@ public class GameController : MonoBehaviour, IGameController
     {
         Instance.audioSource.Play();
         audioSource.volume = SettingsController.instance.GetVolume();
+        checkIfFinished = true;
     }
 
     public void SetAudioTime(float time)
@@ -118,6 +130,11 @@ public class GameController : MonoBehaviour, IGameController
     public double GetAudioSourceTime()
     {
         return (double)Instance.audioSource.time;
+    }
+
+    public bool IsFinished()
+    {
+        return !audioSource.isPlaying;
     }
 
     public void StartGame()
