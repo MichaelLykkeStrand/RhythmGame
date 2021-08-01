@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface ISongRepository
 {
-    Song GetSong();
+    Song GetSong(string keyword);
+    List<Song> GetSongs(string keyword);
     List<Song> GetSongs();
-    void Reload();
 }

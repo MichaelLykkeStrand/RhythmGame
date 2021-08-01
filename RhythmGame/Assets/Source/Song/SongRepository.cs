@@ -6,16 +6,41 @@ using UnityEngine;
 public class SongRepository : MonoBehaviour, ISongRepository 
 {
     public static ISongRepository instance;
-    private List<Song> songList = new List<Song>();
 
-    public Song GetSong()
+
+    public Song GetSong(string keyword)
     {
-        throw new System.NotImplementedException();
+        List<Song> songList = GetSongs();
+        foreach (var song in songList)
+        {
+            if (song.songName.Contains(keyword)) return song;
+        }
+        return null;
     }
 
     public List<Song> GetSongs()
     {
+        List<Song> songList = new List<Song>();
+        var info = new DirectoryInfo(Application.streamingAssetsPath);
+        var songDirInfo = info.GetDirectories();
+        foreach (var dirInfo in songDirInfo)
+        {
+            var fileInfo = dirInfo.GetFiles();
+            foreach (FileInfo file in fileInfo)
+            {
+                if (file.Extension == SongUtils.FILE_EXTENSION)
+                {
+                    Song tempSong = Serializer.DeSerializeObject<Song>(file.FullName);
+                    songList.Add(tempSong);
+                }
+            }
+        }
         return songList;
+    }
+
+    public List<Song> GetSongs(string keyword)
+    {
+        throw new System.NotImplementedException();
     }
 
     public void Reload()
@@ -37,20 +62,7 @@ public class SongRepository : MonoBehaviour, ISongRepository
 
 
         instance = this;
-        var info = new DirectoryInfo(Application.streamingAssetsPath);
-        var songDirInfo = info.GetDirectories();
-        foreach (var dirInfo in songDirInfo)
-        {
-            var fileInfo = dirInfo.GetFiles();
-            foreach (FileInfo file in fileInfo)
-            {
-                if (file.Extension == ".song")
-                {
-                    Song tempSong = Serializer.DeSerializeObject<Song>(file.FullName);
-                    songList.Add(tempSong);
-                }
-            }
-        }
+
     }
 
     // Update is called once per frame
