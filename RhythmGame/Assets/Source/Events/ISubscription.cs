@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ISubscription<EventClass>
+public interface ISubscription
 {
     object Token { get; }
-    void Publish(EventClass eventBase);
+    void Publish(EventBase eventBase);
 }
