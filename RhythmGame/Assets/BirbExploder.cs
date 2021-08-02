@@ -11,11 +11,16 @@ public class BirbExploder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameController.EventBus.Subscribe<NodeHitEvent>(OnNodeHit);
         DontDestroyOnLoad(gameObject);
         instance = this;
         birds = new List<GameObject>();
     }
 
+    void OnNodeHit(NodeHitEvent nodeHitEvent)
+    {
+        Explode();
+    }
 
     public void Explode()
     {

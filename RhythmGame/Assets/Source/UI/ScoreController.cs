@@ -23,6 +23,8 @@ public class ScoreController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameController.EventBus.Subscribe<NodeHitEvent>(OnNodeHit);
+        GameController.EventBus.Subscribe<NodeMissEvent>(OnNodeMiss);
         missSound.volume = SettingsController.instance.GetVolume();
 
         Instance = this;
@@ -30,10 +32,21 @@ public class ScoreController : MonoBehaviour
         comboText.text = comboScore+"";
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnNodeHit(NodeHitEvent hitEvent)
     {
+        if (hitEvent.accuracy <= 0.1 && hitEvent.accuracy >= -0.1)
+        {
+            Hit(ScoreController.PERFECT, false);
+        }
+        else
+        {
+            Hit(ScoreController.OKAY, false);
+        }
+    }
 
+    void OnNodeMiss(NodeMissEvent nodeMissEvent)
+    {
+        Miss();
     }
 
     public void Hit()

@@ -39,6 +39,7 @@ public class PositionNode : MonoBehaviour
     private ParticleSystem particleSystem;
     public float activationTime;
     public float assignedTime;
+    public bool isHit = false;
     [SerializeField] private double visitTime;
     public int index;
     public bool isCheckpoint = false;
@@ -97,7 +98,6 @@ public class PositionNode : MonoBehaviour
             return;
         }
 
-
         //Float in animation
         if (GameController.Instance.GetAudioSourceTime() > activationTime)
         {
@@ -122,43 +122,29 @@ public class PositionNode : MonoBehaviour
                     inputIndicator.GetComponent<SpriteRenderer>().enabled = false;
                 });
             }
-
-            //blockSpriteRenderer.enabled = true;
-            
         }
-
-        
-        if (GameController.Instance.GetAudioSourceTime() - activationTime > 0)
-        {
-
-        }
-
     }
 
     //TODO growth animation stuff
     public void Hit(float accuracy)
     {
+        if (isHit == true) return;
+        isHit = true;
+        GameController.EventBus.Publish<NodeHitEvent>(new NodeHitEvent(this,accuracy));
+        
         particleSystem.Play();
-        try
-        {
-            BirbExploder.instance.Explode();
-            plant.Grow();
-        }
-        catch (System.Exception)
-        {
-        }
+        plant.Grow();
+
 
         Debug.Log("Acc: "+accuracy);
-
+        //TODO move this to own class?
         if(accuracy <= 0.1 && accuracy >= -0.1)
         {
             hitIndicator.Hit(perfectSprite);
-            ScoreController.Instance.Hit(ScoreController.PERFECT,false);
         }
         else
         {
             hitIndicator.Hit(okaySprite);
-            ScoreController.Instance.Hit(ScoreController.OKAY,false);
         }
         
         hitBlock.GetComponent<SpriteRenderer>().enabled = true;
@@ -169,6 +155,7 @@ public class PositionNode : MonoBehaviour
 
     public void Miss()
     {
+        GameController.EventBus.Publish<NodeMissEvent>(new NodeMissEvent(this));
         hitIndicator.Hit(missSprite);
     }
 }

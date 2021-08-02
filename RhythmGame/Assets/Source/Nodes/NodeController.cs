@@ -3,7 +3,6 @@ using Melanchall.DryWetMidi.Interaction;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using static PositionNode;
 
 public class NodeController : MonoBehaviour
 {
@@ -13,6 +12,7 @@ public class NodeController : MonoBehaviour
     private PositionNode[] nodes;
     private PositionNode currentCheckpoint;
     private PlayerBunnyMovement playerMovement;
+    PositionNode currentNode;
 
     int inputIndex = 0;
     private bool doingLongNote = false;
@@ -62,10 +62,9 @@ public class NodeController : MonoBehaviour
             }
         }
     }
-    PositionNode currentNode;
+
     private void FixedUpdate()
     {
-
         if (doingLongNote)
         {
             double timeStamp = timeStamps[inputIndex];
@@ -82,6 +81,7 @@ public class NodeController : MonoBehaviour
             }
         }
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -95,27 +95,22 @@ public class NodeController : MonoBehaviour
 
         if (inputIndex < timeStamps.Count)
         {
-
             //Handle hit
             try
             {
                 if (Input.GetButtonDown(key))
                 {
-                    if (Math.Abs(audioTime - timeStamp) < marginOfError) //Redo
+                    if (Math.Abs(audioTime - timeStamp) < marginOfError)
                     {
                         float accuracy = (float)Math.Abs(audioTime - timeStamp);
                         if (currentNode.IsLongNode)
                         {
-                            CinemachineEffects.instance.Punch();
                             doingLongNote = true;
-                            ScoreController.Instance.Hit();
                             currentNode.Hit(accuracy);
                         }
                         else
                         {
-                            
-                            NodePassed(currentNode, timeStamp);
-                            Hit(currentNode, accuracy);
+                            currentNode.Hit(accuracy);
                             print($"Hit on {inputIndex} note");
                             
                         }
@@ -128,27 +123,26 @@ public class NodeController : MonoBehaviour
                 }
             }
             catch (Exception){}
-            //Handle miss
-            if (timeStamp + marginOfError <= audioTime)
+
+            if (timeStamp <= audioTime)
             {
-                
-                if (key!= "" && !currentNode.IsLongNode)
+                NodePassed(currentNode, timeStamp);
+                Debug.Log($"Autojump");
+                playerMovement.Move();
+            }
+
+            //Handle miss
+            if (timeStamps[inputIndex-1] + marginOfError <= audioTime)
+            {
+                PositionNode node = currentNode.PrevNode;
+                if (node.GetInput()!= "" && !node.IsLongNode && node.isHit == false)
                 {
-                    NodePassed(currentNode, timeStamp);
-                    Miss(currentNode);
+                    node.Miss();
+                    node.isHit = true;
                     print($"Missed {key} key");
 
                 }
-                else
-                {
-                    NodePassed(currentNode, timeStamp);
-                    Debug.Log($"Autojump");
-                    playerMovement.Move();
-
-                }
-                
             }
-            
         }
     }
 
@@ -162,21 +156,6 @@ public class NodeController : MonoBehaviour
         inputIndex++;
     }
 
-    private void Hit(PositionNode node, float accuracy)
-    {
-        playerMovement.Move();
-        node.Hit(accuracy);
-        CinemachineEffects.instance.Punch();
-
-    }
-    private void Miss(PositionNode node)
-    {
-        playerMovement.Move();
-        ScoreController.Instance.Miss();
-        node.Miss();
-        
-    }
-
     public void GoToCheckpoint()
     {
         GameController.Instance.SetAudioTime((float)currentCheckpoint.VisitTime);
@@ -187,7 +166,7 @@ public class NodeController : MonoBehaviour
 
     void OnGUI()
     {
-        if (Application.isEditor)  // or check the app debug flag
+        if (Application.isEditor)
         {
             GUI.Label(new Rect(10, 10, 100, 20), "Checkpoint: "+currentCheckpoint.index);
             var audioTime = GameController.Instance.GetAudioSourceTime() - (GameController.Instance.inputDelayInMilliseconds / 1000.0);

@@ -14,9 +14,15 @@ public class CinemachineEffects : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        GameController.EventBus.Subscribe<NodeHitEvent>(OnNodeHit);
         instance = this;
         cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
         defaultOrthographicSize = cinemachineVirtualCamera.m_Lens.OrthographicSize;
+    }
+
+    void OnNodeHit(NodeHitEvent hitEvent)
+    {
+        Punch();
     }
 
     public void Punch()
