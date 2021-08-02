@@ -72,7 +72,7 @@ public class NodeController : MonoBehaviour
             Debug.Log("Doing long note!");
             if (Input.GetButton(currentNode.PrevNode.GetInput()))
             {
-                ScoreController.Instance.Hit(1);
+                ScoreController.Instance.Add(1);
             }
             else
             {

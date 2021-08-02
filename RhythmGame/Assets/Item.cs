@@ -45,7 +45,7 @@ public class Item : MonoBehaviour
 
     void Pickup()
     {
-        ScoreController.Instance.Hit(50);
+        ScoreController.Instance.Add(50);
         spriteRenderer.enabled = false;
         particleSystem.Play();
     }

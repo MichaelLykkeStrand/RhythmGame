@@ -36,40 +36,39 @@ public class ScoreController : MonoBehaviour
     {
         if (hitEvent.accuracy <= 0.1 && hitEvent.accuracy >= -0.1)
         {
-            Hit(ScoreController.PERFECT, false);
+            Add(ScoreController.PERFECT, false);
         }
         else
         {
-            Hit(ScoreController.OKAY, false);
+            Add(ScoreController.OKAY, false);
         }
     }
 
     void OnNodeMiss(NodeMissEvent nodeMissEvent)
     {
-        Miss();
+        BreakCombo();
     }
 
-    public void Hit()
+
+    public void Add(int _score, bool silent)
     {
-        comboScore += 1;
-        Score += 100 * 1+comboScore/3;
-        UpdateUI();
-        comboGroup.transform.DOPunchScale(new Vector2(-0.2f, -0.2f), 0.1f);
+        if(silent == false)
+        {
+            comboScore += 1;
+            Score += _score * 1 + comboScore / 3;
+            UpdateUI();
+            comboGroup.transform.DOPunchScale(new Vector2(-0.2f, -0.2f), 0.1f);
+        }
+        else
+        {
+            Add(_score);
+        }
     }
 
-    public void Hit(int _score, bool silent)
-    {
-        comboScore += 1;
-        Score += _score * 1 + comboScore / 3;
-        UpdateUI();
-        comboGroup.transform.DOPunchScale(new Vector2(-0.2f, -0.2f), 0.1f);
-    }
-
-    public void Hit(int _score)
+    public void Add(int _score)
     {
         Score += _score;
         UpdateUI();
-        //comboGroup.transform.DOPunchScale(new Vector2(-0.2f, -0.2f), 0.1f);
     }
 
     private void UpdateUI()
@@ -78,7 +77,7 @@ public class ScoreController : MonoBehaviour
         scoreText.text = "Score: " + Score;
     }
 
-    public void Miss()
+    public void BreakCombo()
     {
         comboScore = 0;
         UpdateUI();
