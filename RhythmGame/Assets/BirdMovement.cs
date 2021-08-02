@@ -33,6 +33,5 @@ public class BirdMovement : MonoBehaviour, IExplosion
         {
             BirbExploder.instance.RemoveBird(gameObject);
         }
-
     }
 }

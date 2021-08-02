@@ -10,8 +10,8 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour, IGameController
 {
-
     private Song currentSong;
+    public static EventBus Bus = new EventBus();
     public static GameController Instance;
     [SerializeField] private GameObject endScreen;
     [SerializeField] private AudioSource audioSource;
