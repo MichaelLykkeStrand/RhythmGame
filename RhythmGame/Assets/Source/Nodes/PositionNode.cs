@@ -15,10 +15,10 @@ public class PositionNode : MonoBehaviour
         left,
         right
     };
+
     [SerializeField] private Sprite perfectSprite;
     [SerializeField] private Sprite okaySprite;
     [SerializeField] private Sprite missSprite;
-
     [SerializeField] private Plant plant;
     [SerializeField] private PositionNode nextNode;
     [SerializeField] private PositionNode prevNode;
@@ -32,7 +32,6 @@ public class PositionNode : MonoBehaviour
     [SerializeField] private bool isLongNode = false;
     [SerializeField] private GameObject inputIndicator;
     [SerializeField] private HitIndicator hitIndicator;
-
 
     private Vector3 ghostBlockSpawnpoint;
     private Vector3 blockSpawnpoint;
@@ -52,6 +51,7 @@ public class PositionNode : MonoBehaviour
     public double VisitTime { get => visitTime; set => visitTime = value; }
     public PositionNode PrevNode { get => prevNode; set => prevNode = value; }
     public bool IsLongNode { get => isLongNode; set => isLongNode = value; }
+    private bool didFade = false;
 
     public string GetInput()
     {
@@ -88,7 +88,7 @@ public class PositionNode : MonoBehaviour
 
     }
 
-    private bool didFade = false;
+    
     void Update()
     {
         var blockSpriteRenderer = block.GetComponent<SpriteRenderer>();
@@ -125,7 +125,6 @@ public class PositionNode : MonoBehaviour
         }
     }
 
-    //TODO growth animation stuff
     public void Hit(float accuracy)
     {
         if (isHit == true) return;

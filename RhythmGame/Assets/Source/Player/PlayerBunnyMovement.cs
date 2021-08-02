@@ -13,12 +13,6 @@ public class PlayerBunnyMovement : PlayerMovement
         player = GetComponent<Player>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public override void Move()
     {
         Jump();
