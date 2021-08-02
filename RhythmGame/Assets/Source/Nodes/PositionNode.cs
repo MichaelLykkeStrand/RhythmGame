@@ -134,8 +134,6 @@ public class PositionNode : MonoBehaviour
         particleSystem.Play();
         plant.Grow();
 
-
-        Debug.Log("Acc: "+accuracy);
         //TODO move this to own class?
         if(accuracy <= 0.1 && accuracy >= -0.1)
         {
