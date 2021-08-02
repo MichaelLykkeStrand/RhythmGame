@@ -72,7 +72,6 @@ public class NodeController : MonoBehaviour
             Debug.Log("Doing long note!");
             if (Input.GetButton(currentNode.PrevNode.GetInput()))
             {
-                
                 ScoreController.Instance.Hit(1);
             }
             else
@@ -112,9 +111,7 @@ public class NodeController : MonoBehaviour
                         {
                             currentNode.Hit(accuracy);
                             print($"Hit on {inputIndex} note");
-                            
                         }
-
                     }
                     else
                     {
@@ -140,7 +137,6 @@ public class NodeController : MonoBehaviour
                     node.Miss();
                     node.isHit = true;
                     print($"Missed {key} key");
-
                 }
             }
         }

@@ -7,7 +7,7 @@ public class BirbExploder : MonoBehaviour
 
     private List<GameObject> birds;
     public static BirbExploder instance;
-
+    System.Random random;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +15,7 @@ public class BirbExploder : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         instance = this;
         birds = new List<GameObject>();
+        random = new System.Random();
     }
 
     void OnNodeHit(NodeHitEvent nodeHitEvent)
@@ -29,7 +30,6 @@ public class BirbExploder : MonoBehaviour
         {
             try
             {
-                System.Random random = new System.Random();
                 int value = random.Next(3);
                 if(value == 0)
                 {
