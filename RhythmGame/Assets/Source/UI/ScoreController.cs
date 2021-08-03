@@ -12,6 +12,8 @@ public class ScoreController : MonoBehaviour
     public GameObject comboGroup;
     public Text comboText;
     public Text scoreText;
+
+    //TODO Move this to own class
     public AudioSource hitSound;
     public AudioSource missSound;
 
